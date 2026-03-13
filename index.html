@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipes by Jony</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: #000;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+header {
+  margin-bottom: 60px;
+}
+
+h1 {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+details {
+  margin-bottom: 20px;
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+  -webkit-tap-highlight-color: transparent;
+}
+summary::-webkit-details-marker { display: none; }
+
+summary:hover {
+  color: #6e6e6e;
+}
+
+.recipe-title {
+  font-weight: 400;
+}
+
+.recipe-time {
+  color: #6e6e6e;
+}
+
+details[open] summary {
+  border-bottom: none;
+  margin-bottom: 20px;
+}
+
+.multiplier {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.multiplier button {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.multiplier button:hover {
+  border-color: #000;
+}
+
+.multiplier button.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.label {
+  color: #6e6e6e;
+  padding: 8px 0;
+}
+
+.value {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.ingredients {
+  list-style: none;
+}
+
+.ingredients li {
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.amount {
+  display: inline;
+}
+
+.method {
+  padding: 8px 0;
+  line-height: 1.7;
+}
+
+.notes {
+  color: #6e6e6e;
+  font-size: 14px;
+  padding: 8px 0;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 20px;
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  color: #6e6e6e;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <h1>Recipes by Jony</h1>
+</header>
+
+<details>
+  <summary>
+    <span class="recipe-title">Chimichurri</span>
+    <span class="recipe-time">10 min</span>
+  </summary>
+  
+  <div class="multiplier">
+    <button class="active" onclick="setMultiplier(this, 1)">1×</button>
+    <button onclick="setMultiplier(this, 2)">2×</button>
+    <button onclick="setMultiplier(this, 4)">4×</button>
+  </div>
+  
+  <div class="grid">
+    <div class="label">Type</div>
+    <div class="value">Sauce</div>
+    
+    <div class="label">Origin</div>
+    <div class="value">Latin Fusion</div>
+    
+    <div class="label">Heat</div>
+    <div class="value">Medium</div>
+  </div>
+  
+  <div class="grid">
+    <div class="label">Ingredients</div>
+    <div class="value">
+      <ul class="ingredients">
+        <li><span class="amount" data-base="⅓" data-frac="1/3">⅓</span> cup extra-virgin olive oil</li>
+        <li><span class="amount" data-base="2" data-num="2">2</span> tbsp red wine vinegar</li>
+        <li>Fresh lime juice</li>
+        <li><span class="amount" data-base="4-5" data-num="4">4-5</span> garlic cloves, minced</li>
+        <li><span class="amount" data-base="½" data-frac="1/2">½</span> tsp sea salt</li>
+        <li><span class="amount" data-base="¼" data-frac="1/4">¼</span> tsp dried oregano</li>
+        <li><span class="amount" data-base="¼" data-frac="1/4">¼</span> tsp smoked paprika</li>
+        <li>Fresh serrano pepper</li>
+        <li><span class="amount" data-base="½" data-frac="1/2">½</span> bunch fresh parsley, chopped</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="grid">
+    <div class="label">Method</div>
+    <div class="method">Chop parsley, mince garlic and serrano. Combine with oil, vinegar, lime, salt, oregano, paprika. Stir well. Let sit 10 minutes before serving.</div>
+  </div>
+  
+  <div class="notes">
+    Remove serrano seeds for less heat. Add more lime if too basil-y. This is meant to taste like a chimichurri oil / salsa with a kick.
+  </div>
+</details>
+
+<footer>
+  2026
+</footer>
+
+</div>
+
+<script>
+const fractions = {
+  '1/4': ['¼', '½', '1'],
+  '1/3': ['⅓', '⅔', '1⅓'],
+  '1/2': ['½', '1', '2']
+};
+
+function setMultiplier(btn, mult) {
+  // Update active button
+  btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  // Update amounts
+  document.querySelectorAll('.amount').forEach(el => {
+    if (el.dataset.num) {
+      el.textContent = parseInt(el.dataset.num) * mult;
+    } else if (el.dataset.frac) {
+      const frac = el.dataset.frac;
+      if (mult === 1) {
+        el.textContent = el.dataset.base;
+      } else if (mult === 2) {
+        el.textContent = fractions[frac] ? fractions[frac][1] : el.dataset.base;
+      } else if (mult === 4) {
+        el.textContent = fractions[frac] ? fractions[frac][2] : el.dataset.base;
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>
