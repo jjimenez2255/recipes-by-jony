@@ -31,7 +31,7 @@ h1 {
 }
 
 details {
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 summary {
@@ -130,12 +130,46 @@ details[open] summary {
   line-height: 1.7;
 }
 
+.method-steps {
+  list-style: none;
+  counter-reset: step;
+}
+
+.method-steps li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 1.7;
+}
+
+.method-steps li::before {
+  counter-increment: step;
+  content: counter(step) ". ";
+  color: #6e6e6e;
+}
+
 .notes {
   color: #6e6e6e;
   font-size: 14px;
   padding: 8px 0;
   border-top: 1px solid #e0e0e0;
   margin-top: 20px;
+}
+
+.variation {
+  background: #f8f8f8;
+  padding: 16px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.variation-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.recipe-content {
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 footer {
@@ -155,53 +189,274 @@ footer {
   <h1>Las Recetas</h1>
 </header>
 
+<!-- Chimichurri -->
 <details>
   <summary>
     <span class="recipe-title">Chimichurri</span>
     <span class="recipe-time">10 min</span>
   </summary>
   
-  <div class="multiplier">
-    <button class="active" onclick="setMultiplier(this, 1)">1×</button>
-    <button onclick="setMultiplier(this, 2)">2×</button>
-    <button onclick="setMultiplier(this, 4)">4×</button>
-  </div>
-  
-  <div class="grid">
-    <div class="label">Type</div>
-    <div class="value">Sauce</div>
+  <div class="recipe-content">
+    <div class="multiplier" data-recipe="chimi">
+      <button class="active" onclick="setMultiplier(this, 1)">1×</button>
+      <button onclick="setMultiplier(this, 2)">2×</button>
+      <button onclick="setMultiplier(this, 4)">4×</button>
+    </div>
     
-    <div class="label">Origin</div>
-    <div class="value">Latin Fusion</div>
+    <div class="grid">
+      <div class="label">Type</div>
+      <div class="value">Sauce</div>
+      
+      <div class="label">Origin</div>
+      <div class="value">Latin Fusion</div>
+    </div>
     
-    <div class="label">Heat</div>
-    <div class="value">Medium</div>
-  </div>
-  
-  <div class="grid">
-    <div class="label">Ingredients</div>
-    <div class="value">
-      <ul class="ingredients">
-        <li><span class="amount" data-base="⅓" data-frac="1/3">⅓</span> cup extra-virgin olive oil</li>
-        <li><span class="amount" data-base="2" data-num="2">2</span> tbsp red wine vinegar</li>
-        <li>Fresh lime juice</li>
-        <li><span class="amount" data-base="4-5" data-num="4">4-5</span> garlic cloves, minced</li>
-        <li><span class="amount" data-base="½" data-frac="1/2">½</span> tsp sea salt</li>
-        <li><span class="amount" data-base="¼" data-frac="1/4">¼</span> tsp dried oregano</li>
-        <li><span class="amount" data-base="¼" data-frac="1/4">¼</span> tsp smoked paprika</li>
-        <li>Fresh serrano pepper</li>
-        <li><span class="amount" data-base="½" data-frac="1/2">½</span> bunch fresh parsley, chopped</li>
-      </ul>
+    <div class="grid">
+      <div class="label">Ingredients</div>
+      <div class="value">
+        <ul class="ingredients">
+          <li><span class="amount" data-base="⅓" data-frac="1/3">⅓</span> cup extra-virgin olive oil</li>
+          <li><span class="amount" data-base="2" data-num="2">2</span> tbsp red wine vinegar</li>
+          <li>Fresh lime juice</li>
+          <li><span class="amount" data-base="4-5" data-num="4">4-5</span> garlic cloves, minced</li>
+          <li><span class="amount" data-base="½" data-frac="1/2">½</span> tsp sea salt</li>
+          <li><span class="amount" data-base="¼" data-frac="1/4">¼</span> tsp dried oregano</li>
+          <li><span class="amount" data-base="¼" data-frac="1/4">¼</span> tsp smoked paprika</li>
+          <li>Fresh serrano pepper</li>
+          <li><span class="amount" data-base="½" data-frac="1/2">½</span> bunch fresh parsley, chopped</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Method</div>
+      <div class="method">Chop parsley, mince garlic and serrano. Combine with oil, vinegar, lime, salt, oregano, paprika. Stir well. Let sit 10 minutes before serving.</div>
+    </div>
+    
+    <div class="notes">
+      Remove serrano seeds for less heat. Add more lime if too basil-y. This is meant to taste like a chimichurri oil / salsa with a kick.
     </div>
   </div>
+</details>
+
+<!-- Beef Braise Bowl -->
+<details>
+  <summary>
+    <span class="recipe-title">Beef Braise Bowl</span>
+    <span class="recipe-time">4 hrs</span>
+  </summary>
   
-  <div class="grid">
-    <div class="label">Method</div>
-    <div class="method">Chop parsley, mince garlic and serrano. Combine with oil, vinegar, lime, salt, oregano, paprika. Stir well. Let sit 10 minutes before serving.</div>
+  <div class="recipe-content">
+    <div class="multiplier" data-recipe="beef">
+      <button class="active" onclick="setMultiplier(this, 1)">1×</button>
+      <button onclick="setMultiplier(this, 2)">2×</button>
+      <button onclick="setMultiplier(this, 4)">4×</button>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Type</div>
+      <div class="value">Main</div>
+      
+      <div class="label">Style</div>
+      <div class="value">Carnitas-style braised rump roast</div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Ingredients</div>
+      <div class="value">
+        <ul class="ingredients">
+          <li><span class="amount" data-base="2-3" data-num="2">2-3</span> lbs rump roast or chuck, cut into chunks</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> large onion, diced</li>
+          <li><span class="amount" data-base="5-6" data-num="5">5-6</span> garlic cloves, smashed</li>
+          <li>Juice of <span class="amount" data-base="2" data-num="2">2</span> fresh oranges</li>
+          <li><span class="amount" data-base="1.5-2" data-num="1.5">1.5-2</span> cups beef broth</li>
+          <li>Splash of red wine vinegar</li>
+          <li>Beef tallow or avocado oil</li>
+          <li><span class="amount" data-base="1.5" data-num="1.5">1.5</span> tsp salt</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> tsp black pepper</li>
+          <li><span class="amount" data-base="1.5" data-num="1.5">1.5</span> tsp cumin</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> tsp smoked paprika</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> tsp oregano</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Bowl</div>
+      <div class="value">
+        <ul class="ingredients">
+          <li>Cooked white rice</li>
+          <li>Cooked beans (pinto or white)</li>
+          <li>Avocado</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Method</div>
+      <div class="value">
+        <ol class="method-steps">
+          <li>Season all sides of beef with salt, pepper, cumin, paprika, oregano</li>
+          <li>Sear in hot tallow/oil, 3 min per side until deep brown. Set aside with juices</li>
+          <li>Sauté onion 3 min, add garlic 1 min. Add OJ, vinegar, broth, reserved juices</li>
+          <li>Nestle beef back in, cover. 300°F oven for 3.5-4 hours</li>
+          <li>Pull beef, shred with forks. Reduce liquid 10-15 min until glossy. Toss beef back in</li>
+          <li>Assemble: rice, beans, beef, avocado</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="variation">
+      <div class="variation-title">Barbacoa Direction</div>
+      Replace OJ with 2-3 chipotles in adobo + 2 tbsp tomato paste. Add 1 tsp ancho chili powder and 1 tsp garlic powder. Keep broth as main liquid. Same technique.
+    </div>
   </div>
+</details>
+
+<!-- Heirloom Tomato Salsa -->
+<details>
+  <summary>
+    <span class="recipe-title">Heirloom Tomato Salsa</span>
+    <span class="recipe-time">15 min</span>
+  </summary>
   
-  <div class="notes">
-    Remove serrano seeds for less heat. Add more lime if too basil-y. This is meant to taste like a chimichurri oil / salsa with a kick.
+  <div class="recipe-content">
+    <div class="multiplier" data-recipe="salsa">
+      <button class="active" onclick="setMultiplier(this, 1)">1×</button>
+      <button onclick="setMultiplier(this, 2)">2×</button>
+      <button onclick="setMultiplier(this, 4)">4×</button>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Type</div>
+      <div class="value">Salsa</div>
+      
+      <div class="label">Style</div>
+      <div class="value">Fresh with charred peppers and smoky depth</div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Ingredients</div>
+      <div class="value">
+        <ul class="ingredients">
+          <li><span class="amount" data-base="3-4" data-num="3">3-4</span> heirloom tomatoes, coarsely chopped</li>
+          <li><span class="amount" data-base="½" data-frac="1/2">½</span> white onion, charred and diced</li>
+          <li><span class="amount" data-base="1-2" data-num="1">1-2</span> serrano peppers, charred and minced</li>
+          <li><span class="amount" data-base="1-2" data-num="1">1-2</span> garlic cloves, minced fine</li>
+          <li>Handful of fresh cilantro, chopped</li>
+          <li>Juice of <span class="amount" data-base="1-2" data-num="1">1-2</span> limes</li>
+          <li>Pinch of cumin</li>
+          <li>Sea salt to taste</li>
+          <li>Splash of olive oil (optional)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Method</div>
+      <div class="method">Char serrano and onion on cast iron until blistered. Dice onion, mince peppers. Coarsely chop tomatoes — keep chunky. Combine everything with garlic, cilantro, lime, cumin, salt. Toss gently. Let sit before serving.</div>
+    </div>
+    
+    <div class="notes">
+      Keep heirloom tomatoes fresh — they lose flavor when cooked. Char peppers and onion for smoky depth. For fully roasted salsa, use Roma tomatoes instead.
+    </div>
+  </div>
+</details>
+
+<!-- Cucumber Salad -->
+<details>
+  <summary>
+    <span class="recipe-title">Cucumber Salad</span>
+    <span class="recipe-time">15 min</span>
+  </summary>
+  
+  <div class="recipe-content">
+    <div class="multiplier" data-recipe="cucumber">
+      <button class="active" onclick="setMultiplier(this, 1)">1×</button>
+      <button onclick="setMultiplier(this, 2)">2×</button>
+      <button onclick="setMultiplier(this, 4)">4×</button>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Type</div>
+      <div class="value">Side</div>
+      
+      <div class="label">Style</div>
+      <div class="value">Bright and crunchy with ginger and serrano heat</div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Ingredients</div>
+      <div class="value">
+        <ul class="ingredients">
+          <li><span class="amount" data-base="2-3" data-num="2">2-3</span> cucumbers, sliced thin</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> serrano pepper, thinly sliced</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> tsp fresh ginger, grated</li>
+          <li><span class="amount" data-base="2-3" data-num="2">2-3</span> garlic cloves, thinly sliced</li>
+          <li><span class="amount" data-base="2-3" data-num="2">2-3</span> tbsp organic rice vinegar</li>
+          <li>Sea salt to taste</li>
+          <li>Fresh cilantro, chopped</li>
+          <li>Squeeze of lime (optional)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Method</div>
+      <div class="method">Slice cucumbers thin and salt them. Let sit 10 minutes, then pat dry. Toss with serrano, ginger, garlic, rice vinegar, cilantro. Finish with lime if desired.</div>
+    </div>
+    
+    <div class="notes">
+      Salting and draining cucumbers keeps salad crisp. A tiny pinch of sugar can balance the vinegar. Keeps well in fridge for a day.
+    </div>
+  </div>
+</details>
+
+<!-- Sesame-Ginger Carrots -->
+<details>
+  <summary>
+    <span class="recipe-title">Sesame-Ginger Carrots</span>
+    <span class="recipe-time">10 min</span>
+  </summary>
+  
+  <div class="recipe-content">
+    <div class="multiplier" data-recipe="carrots">
+      <button class="active" onclick="setMultiplier(this, 1)">1×</button>
+      <button onclick="setMultiplier(this, 2)">2×</button>
+      <button onclick="setMultiplier(this, 4)">4×</button>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Type</div>
+      <div class="value">Side</div>
+      
+      <div class="label">Style</div>
+      <div class="value">Quick glazed carrots for rice and beef bowls</div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Ingredients</div>
+      <div class="value">
+        <ul class="ingredients">
+          <li><span class="amount" data-base="4-5" data-num="4">4-5</span> whole carrots, bias-cut</li>
+          <li><span class="amount" data-base="1-2" data-num="1">1-2</span> garlic cloves, minced</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> tsp fresh ginger, grated</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> tbsp coconut aminos</li>
+          <li><span class="amount" data-base="1" data-num="1">1</span> tsp organic rice vinegar</li>
+          <li>Avocado oil or beef tallow</li>
+          <li>Sea salt to taste</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="grid">
+      <div class="label">Method</div>
+      <div class="method">Heat oil in pan over medium-high. Sauté carrots 3-4 min until colored but with bite. Add garlic and ginger, stir 30 seconds. Splash in coconut aminos — let it sizzle and glaze. Kill heat, add rice vinegar, toss.</div>
+    </div>
+    
+    <div class="notes">
+      Adding coconut aminos in the hot pan caramelizes and coats the carrots. Rice vinegar at the end lifts the flavors. Great over rice with braised meat.
+    </div>
   </div>
 </details>
 
@@ -219,14 +474,17 @@ const fractions = {
 };
 
 function setMultiplier(btn, mult) {
+  const container = btn.closest('.recipe-content');
+  
   // Update active button
   btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   
-  // Update amounts
-  document.querySelectorAll('.amount').forEach(el => {
+  // Update amounts within this recipe only
+  container.querySelectorAll('.amount').forEach(el => {
     if (el.dataset.num) {
-      el.textContent = parseInt(el.dataset.num) * mult;
+      const base = parseFloat(el.dataset.num);
+      el.textContent = el.dataset.base.replace(/[\d.]+/, (base * mult).toString());
     } else if (el.dataset.frac) {
       const frac = el.dataset.frac;
       if (mult === 1) {
